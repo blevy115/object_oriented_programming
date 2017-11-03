@@ -20,18 +20,22 @@ class Cat
 
   def eats_at
     if meal_time >= 13
-      puts "#{meal_time-12}PM"
+      return "#{meal_time-12}PM"
     elsif meal_time == 12
-      puts "#{meal_time}PM"
-    elsif meal_time < 12 && @meal_time > 0
-      puts "#{meal_time}AM"
+      return "#{meal_time}PM"
+    elsif meal_time < 12 && meal_time > 0
+      return "#{meal_time}AM"
     elsif meal_time == 0
-      puts "#{meal_time+12}AM"
+      return "#{meal_time+12}AM"
     end
+  end
+
+  def meow
+    puts "My name is #{name} and i eat #{preferred_food} at #{eats_at}."
   end
 end
 
 nami=Cat.new("Nami", "Oranges", 12)
 robin=Cat.new("Robin", "Fish", 20)
 
-puts robin.eats_at
+puts robin.meow
