@@ -14,17 +14,26 @@ class BankAccount
   end
 
   def deposit=(amount)
-    @balance = @balance + amount
+    @balance += amount
   end
 
   def withdraw=(amount)
-    @balance = @balance - amount
+    @balance -= amount
+  end
+
+  def gain_interest
+    @balance = balance*(1+(interest_rate.to_f/100))
   end
 end
 
-brandon = BankAccount.new(0, 15)
+puts "What is Brandon's Initial Balance ($) ?"
+a=gets.chomp.to_i
+puts "What is Brandon's Interest Rate (%) ?"
+b=gets.chomp.to_i
+brandon = BankAccount.new(a, b)
 
 brandon.deposit=(40)
 brandon.deposit=(80)
 brandon.withdraw=(45)
-puts brandon.balance
+brandon.gain_interest
+puts "Your balance is #{brandon.balance}$"
