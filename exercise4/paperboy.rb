@@ -46,19 +46,34 @@ class Paperboy
   end
 
   def report
-    puts "I'm #{name}, I've delivered #{experience} papers and I've earned $#{earnings} so far"
+    puts "I'm #{name}, I've delivered #{experience} papers and I've earned $#{earnings} so far."
   end
 end
 
+puts "What is your Paperboys name?"
+name = gets.chomp
 
-tommy = Paperboy.new("Tommy")
+boy = Paperboy.new(name)
+i = 0
+until i == "yes"
+  puts "What is the first house on your route today?"
+  a = gets.chomp.to_i
+  puts "What is the last house on your route today?"
+  b = gets.chomp.to_i
+  boy.deliver(a, b)
+  puts "Your day earnings are #{boy.earnings}$"
+  puts "Do you want to see your report?"
+  answer = gets.chomp
+  if answer == "yes"
+    boy.report
+  end
+  puts "Are you done delivering?"
+  i = gets.chomp
+end
 
-puts tommy.quota # => 50
-puts tommy.deliver(101, 160) # => 17.5
-puts tommy.earnings #=> 17.5
-tommy.report # => "I'm Tommy, I've delivered 60 papers and I've earned $17.5 so far!"
-
-puts tommy.quota # => 80
-puts tommy.deliver(1, 75) # => 16.75
-puts tommy.earnings #=> 34.25
-tommy.report # => "I'm Tommy, I've been delivered 135 papers and I've earned $34.25 so far!"
+puts "Thanks for serving your local paper company, you made #{boy.earnings}$."
+#
+# puts boy.quota
+# puts boy.deliver(1, 75)
+# puts boy.earnings
+# boy.report
